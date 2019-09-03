@@ -4,18 +4,24 @@ var imagemin = require("imagemin"),    // The imagemin module.
   PNGImages = "images/*.png",         // PNG images
   JPEGImages = "images/*.jpg";        // JPEG images
 
-imagemin([PNGImages], outputFolder, {
+imagemin([PNGImages], {
+  destination: outputFolder,
   plugins: [webp({
     lossless: true // Losslessly encode images
   })]
-}).then(() => {
+}).then(files => {
+  if (files.length <= 0) return;
+  console.log(files.map(file => file.destinationPath));
   console.log('PNG Images optimized');
 });
 
-imagemin([JPEGImages], outputFolder, {
+imagemin([JPEGImages], {
+  destination: outputFolder,
   plugins: [webp({
     quality: 65 // Quality setting from 0 to 100
   })]
-}).then(() => {
+}).then(files => {
+  if (files.length <= 0) return;
+  console.log(files.map(file => file.destinationPath));
   console.log('JPG Images optimized');
 });
