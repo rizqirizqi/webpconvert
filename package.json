@@ -1,15 +1,17 @@
 {
   "dependencies": {
     "imagemin": "^7.0.0",
-    "imagemin-webp": "^5.1.0"
+    "imagemin-webp": "^5.1.0",
+    "yargs": "^15.0.2"
   },
   "scripts": {
     "start": "node index.js"
   },
   "name": "webpconvert",
   "version": "1.0.0",
-  "description": "Convert images to webp",
+  "description": "Convert jpg/png images to webp",
   "main": "index.js",
   "author": "Mgs. M. Rizqi Fadhlurrahman <rizqirizqi23@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "bin": "./index.js"
 }

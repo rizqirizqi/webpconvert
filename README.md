@@ -1,8 +1,8 @@
 # WebpConvert
 
 ## How to Use
-1. Add png or jpg images to `/images` directory
-2. Run
+1. Move your png/jpg files in a directory
+2. Run this command in that directory
    ```bash
-   yarn start
+   npx webpconvert
    ```

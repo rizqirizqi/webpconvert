@@ -1,11 +1,37 @@
-var imagemin = require("imagemin"),    // The imagemin module.
-  webp = require("imagemin-webp"),   // imagemin's WebP plugin.
-  outputFolder = "images",            // Output folder
-  PNGImages = "images/*.png",         // PNG images
-  JPEGImages = "images/*.jpg";        // JPEG images
+#!/usr/bin/env node
+const yargs = require('yargs');
+const imagemin = require("imagemin");
+const webp = require("imagemin-webp");
+
+const argv = yargs
+  .usage('Convert jpg/png images in specified directory to webp\nUsage: webpconvert [options]')
+  .example('webpconvert')
+  .example('webpconvert -s ./sourceImg -t ./targetImg')
+  .options('source', {
+    alias: 's',
+    type: 'string',
+    describe: 'source directory',
+    default: '.',
+  })
+  .options('target', {
+    alias: 't',
+    type: 'string',
+    describe: 'target directory',
+    default: '.',
+  })
+  .help()
+  .alias('help', 'h')
+  .version()
+  .alias('version', 'v')
+  .argv;
+
+const sourceDir = argv.sourceDir || '.';
+const targetDir = argv.targetDir || '.';
+const PNGImages = `${sourceDir}/*.png`;
+const JPEGImages = `${sourceDir}/*.jpg`;
 
 imagemin([PNGImages], {
-  destination: outputFolder,
+  destination: targetDir,
   plugins: [webp({
     lossless: true // Losslessly encode images
   })]
@@ -16,7 +42,7 @@ imagemin([PNGImages], {
 });
 
 imagemin([JPEGImages], {
-  destination: outputFolder,
+  destination: targetDir,
   plugins: [webp({
     quality: 65 // Quality setting from 0 to 100
   })]
