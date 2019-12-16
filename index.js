@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 const yargs = require('yargs');
-const imagemin = require("imagemin");
+const gulp = require('gulp');
+const imagemin = require('gulp-imagemin');
+const rename = require('gulp-rename');
 const webp = require("imagemin-webp");
 
 const argv = yargs
@@ -30,24 +32,26 @@ const targetDir = argv.targetDir || '.';
 const PNGImages = `${sourceDir}/*.png`;
 const JPEGImages = `${sourceDir}/*.jpg`;
 
-imagemin([PNGImages], {
-  destination: targetDir,
-  plugins: [webp({
+gulp.src(PNGImages)
+  .pipe(imagemin([webp({
     lossless: true // Losslessly encode images
-  })]
-}).then(files => {
-  if (files.length <= 0) return;
-  console.log(files.map(file => file.destinationPath));
-  console.log('PNG Images optimized');
-});
+  })], {
+    verbose: true
+  }))
+  .pipe(rename({ suffix: ".png", extname: '.webp' }))
+  .pipe(gulp.dest(targetDir))
+  .on("finish", () => {
+    console.log('PNG Images optimized');
+  });
 
-imagemin([JPEGImages], {
-  destination: targetDir,
-  plugins: [webp({
+gulp.src(JPEGImages)
+  .pipe(imagemin([webp({
     quality: 65 // Quality setting from 0 to 100
-  })]
-}).then(files => {
-  if (files.length <= 0) return;
-  console.log(files.map(file => file.destinationPath));
-  console.log('JPG Images optimized');
-});
+  })], {
+    verbose: true
+  }))
+  .pipe(rename({ suffix: ".jpg", extname: '.webp' }))
+  .pipe(gulp.dest(targetDir))
+  .on("finish", () => {
+    console.log('JPG Images optimized');
+  });
