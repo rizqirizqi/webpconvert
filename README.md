@@ -12,6 +12,11 @@ CLI Converter from png/jpg images to webp
    npx webpconvert
    ```
 
+## Help
+```
+npx webpconvert --help
+```
+
 ## Contributing
 1. Fork this repo
 2. Create pull request
