@@ -1,15 +1,21 @@
 {
   "name": "webpconvert",
-  "version": "1.0.1",
-  "description": "Convert jpg/png images to webp",
-  "keywords§": ["cli", "converter", "webp"],
-  "bugs": { "url" : "https://github.com/rizqirizqi/webpconvert/issues" },
+  "version": "1.0.2",
+  "description": "CLI Converter from png/jpg images to webp",
   "main": "index.js",
-  "author": "Mgs. M. Rizqi Fadhlurrahman <rizqirizqi23@gmail.com>",
-  "license": "MIT",
   "bin": "./index.js",
   "scripts": {
     "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rizqirizqi/webpconvert.git"
+  },
+  "keywords": ["cli", "converter", "webp"],
+  "author": "Mgs. M. Rizqi Fadhlurrahman <rizqirizqi23@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url" : "https://github.com/rizqirizqi/webpconvert/issues"
   },
   "dependencies": {
     "gulp": "^4.0.2",
