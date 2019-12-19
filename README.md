@@ -41,7 +41,7 @@ MIT
 [downloads-badge]: https://img.shields.io/npm/dm/webpconvert.svg?style=flat-square
 [npm-stat]: http://npm-stat.com/charts.html?package=webpconvert&from=2019-01-01
 [license-badge]: https://img.shields.io/npm/l/webpconvert.svg?style=flat-square
-[license]: https://github.com/rizqirizqi/webpconvert/blob/master/other/LICENSE
+[license]: https://github.com/rizqirizqi/webpconvert/blob/master/LICENSE
 [prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
 [prs]: http://makeapullrequest.com
 [github-watch-badge]: https://img.shields.io/github/watchers/rizqirizqi/webpconvert.svg?style=social
