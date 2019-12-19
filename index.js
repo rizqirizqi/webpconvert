@@ -31,25 +31,60 @@ const argv = yargs
   .alias('version', 'v')
   .argv;
 
-const sourceDir = argv.source || '.';
-const targetDir = argv.target !== DEFAULT_TARGET ? argv.target : sourceDir;
-const PNGImages = path.resolve(sourceDir, '*.png');
-const JPEGImages = path.resolve(sourceDir, '*.jpg');
+// Setup Source and Target
 
-gulp.src(PNGImages)
-  .pipe(imagemin([webp({
-    lossless: true // Losslessly encode images
-  })], {
-    verbose: true
-  }))
-  .pipe(rename({ suffix: ".png", extname: '.webp' }))
-  .pipe(gulp.dest(targetDir));
+const getExt = str => {
+  const splitted = str.split('.');
+  if (splitted.length < 2) return '';
+  if (!splitted[0]) return '';
+  return splitted[1];
+}
+const isFile = str => {
+  return !!getExt(str);
+}
 
-gulp.src(JPEGImages)
-  .pipe(imagemin([webp({
-    quality: 65 // Quality setting from 0 to 100
-  })], {
-    verbose: true
-  }))
-  .pipe(rename({ suffix: ".jpg", extname: '.webp' }))
-  .pipe(gulp.dest(targetDir));
+const source = argv.source || '.';
+
+let PNGImages = '';
+let JPGImages = '';
+
+if (isFile(source)) {
+  if (getExt(source) === 'png') {
+    PNGImages = source;
+  } else if (getExt(source) === 'jpg' || getExt(source) === 'jpeg') {
+    JPGImages = source;
+  }
+} else {
+  PNGImages = path.resolve(source, '*.png');
+  JPGImages = path.resolve(source, '*.jpg');
+}
+
+let target = argv.target !== DEFAULT_TARGET ? argv.target : source;
+
+if (isFile(target)) {
+  target = path.dirname(target);
+}
+
+// Processing
+
+if (PNGImages) {
+  gulp.src(PNGImages)
+    .pipe(imagemin([webp({
+      lossless: true // Losslessly encode images
+    })], {
+      verbose: true
+    }))
+    .pipe(rename({ suffix: ".png", extname: '.webp' }))
+    .pipe(gulp.dest(target));
+}
+
+if (JPGImages) {
+  gulp.src(JPGImages)
+    .pipe(imagemin([webp({
+      quality: 65 // Quality setting from 0 to 100
+    })], {
+      verbose: true
+    }))
+    .pipe(rename({ suffix: ".jpg", extname: '.webp' }))
+    .pipe(gulp.dest(target));
+}
