@@ -9,22 +9,11 @@ const path = require('path');
 const DEFAULT_SOURCE = '.';
 const DEFAULT_TARGET = 'same as source directory';
 const argv = yargs
-  .usage('Convert jpg/png images in specified directory to webp\nUsage: webpconvert [options]')
+  .usage('Convert jpg/png images in specified directory to webp\nUsage: webpconvert [source] [target] [options]')
   .example('webpconvert')
-  .example('webpconvert -s sample-images')
-  .example('webpconvert -s sample-images -t sample-images')
-  .options('source', {
-    alias: 's',
-    type: 'string',
-    describe: 'source directory',
-    default: DEFAULT_SOURCE,
-  })
-  .options('target', {
-    alias: 't',
-    type: 'string',
-    describe: 'target directory',
-    default: DEFAULT_TARGET,
-  })
+  .example('webpconvert sample-images')
+  .example('webpconvert sample-images output')
+  .example('webpconvert sample-images/KittenJPG.jpg')
   .help()
   .alias('help', 'h')
   .version()
@@ -43,7 +32,7 @@ const isFile = str => {
   return !!getExt(str);
 }
 
-const source = argv.source || '.';
+const source = argv._[0] || '.';
 
 let PNGImages = '';
 let JPGImages = '';
@@ -59,7 +48,7 @@ if (isFile(source)) {
   JPGImages = path.resolve(source, '*.jpg');
 }
 
-let target = argv.target !== DEFAULT_TARGET ? argv.target : source;
+let target = argv._[1] || source || '.';
 
 if (isFile(target)) {
   target = path.dirname(target);
