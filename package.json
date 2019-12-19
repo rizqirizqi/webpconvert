@@ -5,17 +5,24 @@
   "main": "index.js",
   "bin": "./index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "jest",
+    "test:coverage": "yarn test --collectCoverage",
+    "test:coverage-html": "yarn test:coverage --coverageReporters=html && xdg-open coverage/index.html"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/rizqirizqi/webpconvert.git"
   },
-  "keywords": ["cli", "converter", "webp"],
+  "keywords": [
+    "cli",
+    "converter",
+    "webp"
+  ],
   "author": "Mgs. M. Rizqi Fadhlurrahman <rizqirizqi23@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url" : "https://github.com/rizqirizqi/webpconvert/issues"
+    "url": "https://github.com/rizqirizqi/webpconvert/issues"
   },
   "dependencies": {
     "gulp": "^4.0.2",
@@ -24,5 +31,10 @@
     "imagemin": "^7.0.0",
     "imagemin-webp": "^5.1.0",
     "yargs": "^15.0.2"
+  },
+  "devDependencies": {
+    "directory-tree": "^2.2.4",
+    "jest": "^24.9.0",
+    "spawn-command": "^0.0.2-1"
   }
 }

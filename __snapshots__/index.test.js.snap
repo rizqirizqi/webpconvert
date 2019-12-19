@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`webpconvert --help 1`] = `
+"Convert jpg/png images in specified directory to webp
+Usage: webpconvert [source] [target] [options]
+
+Options:
+  --help, -h     Show help                                             [boolean]
+  --version, -v  Show version number                                   [boolean]
+
+Examples:
+  webpconvert
+  webpconvert sample-images
+  webpconvert sample-images output
+  webpconvert sample-images/KittenJPG.jpg
+"
+`;
