@@ -6,9 +6,7 @@ const rename = require('gulp-rename');
 const webp = require('imagemin-webp');
 const path = require('path');
 
-const DEFAULT_SOURCE = '.';
-const DEFAULT_TARGET = 'same as source directory';
-const argv = yargs
+const { argv } = yargs
   .usage('Convert jpg/png images in specified directory to webp\nUsage: webpconvert [source] [target] [options]')
   .example('webpconvert')
   .example('webpconvert sample-images')
@@ -17,20 +15,17 @@ const argv = yargs
   .help()
   .alias('help', 'h')
   .version()
-  .alias('version', 'v')
-  .argv;
+  .alias('version', 'v');
 
 // Setup Source and Target
 
-const getExt = str => {
+const getExt = (str) => {
   const splitted = str.split('.');
   if (splitted.length < 2) return '';
   if (!splitted[0]) return '';
   return splitted[1];
-}
-const isFile = str => {
-  return !!getExt(str);
-}
+};
+const isFile = (str) => !!getExt(str);
 
 const source = argv._[0] || '.';
 
@@ -59,21 +54,21 @@ if (isFile(target)) {
 if (PNGImages) {
   gulp.src(PNGImages)
     .pipe(imagemin([webp({
-      lossless: true // Losslessly encode images
+      lossless: true, // Losslessly encode images
     })], {
-      verbose: true
+      verbose: true,
     }))
-    .pipe(rename({ suffix: ".png", extname: '.webp' }))
+    .pipe(rename({ suffix: '.png', extname: '.webp' }))
     .pipe(gulp.dest(target));
 }
 
 if (JPGImages) {
   gulp.src(JPGImages)
     .pipe(imagemin([webp({
-      quality: 65 // Quality setting from 0 to 100
+      quality: 65, // Quality setting from 0 to 100
     })], {
-      verbose: true
+      verbose: true,
     }))
-    .pipe(rename({ suffix: ".jpg", extname: '.webp' }))
+    .pipe(rename({ suffix: '.jpg', extname: '.webp' }))
     .pipe(gulp.dest(target));
 }
