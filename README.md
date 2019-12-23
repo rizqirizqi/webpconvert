@@ -2,16 +2,21 @@
 
 CLI Converter from png/jpg images to webp
 
-[![version][version-badge]][package]
-[![downloads][downloads-badge]][npm-stat]
-[![MIT License][license-badge]][license]
-[![PRs Welcome][prs-badge]][prs]
+[![Build Status][build-badge]][build-url]
+[![version][version-badge]][version-url]
+[![downloads][downloads-badge]][downloads-url]
+[![MIT License][license-badge]][license-url]
+
+[![dependencies Status][dep-badge]][dep-url]
+[![devDependencies Status][dev-dep-badge]][dev-dep-url]
+[![Known Vulnerabilities][vulnerability-badge]][vulnerability-url]
+[![contributions welcome][contrib-badge]][contrib-url]
 
 [![Watch on GitHub][github-watch-badge]][github-watch]
 [![Star on GitHub][github-star-badge]][github-star]
 [![Tweet][twitter-badge]][twitter]
 
-## How to Use
+## Usage
 1. Install npx
    ```bash
    npm install -g npx
@@ -21,29 +26,55 @@ CLI Converter from png/jpg images to webp
    npx webpconvert <source>
    ```
 
-## Help
+### Help
 ```bash
 npx webpconvert --help
 ```
 
 ## Contributing
 1. Fork this repo
-2. Create pull request
-3. Tag [@rizqirizqi](https://github.com/rizqirizqi) for review
-4. Merge~~
+2. Develop
+3. Create pull request
+4. Tag [@rizqirizqi](https://github.com/rizqirizqi) for review
+5. Merge~~
 
-## LICENSE
+### Start
+```
+yarn start
+```
+
+### Test
+```
+yarn test
+```
+
+### Lint
+```
+yarn lint
+```
+
+## License
 
 MIT
 
+[build-badge]: https://img.shields.io/github/workflow/status/rizqirizqi/webpconvert/Publish?style=flat-square
+[build-url]: https://github.com/rizqirizqi/webpconvert/actions
 [version-badge]: https://img.shields.io/npm/v/webpconvert.svg?style=flat-square
-[package]: https://www.npmjs.com/package/webpconvert
+[version-url]: https://www.npmjs.com/package/webpconvert
 [downloads-badge]: https://img.shields.io/npm/dm/webpconvert.svg?style=flat-square
-[npm-stat]: http://npm-stat.com/charts.html?package=webpconvert&from=2019-01-01
+[downloads-url]: http://npm-stat.com/charts.html?package=webpconvert&from=2019-01-01
 [license-badge]: https://img.shields.io/npm/l/webpconvert.svg?style=flat-square
-[license]: https://github.com/rizqirizqi/webpconvert/blob/master/LICENSE
-[prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
-[prs]: http://makeapullrequest.com
+[license-url]: https://github.com/rizqirizqi/webpconvert/blob/master/LICENSE
+
+[dep-badge]: https://img.shields.io/david/rizqirizqi/webpconvert?style=flat-square
+[dep-url]: https://david-dm.org/rizqirizqi/webpconvert
+[dev-dep-badge]: https://img.shields.io/david/dev/rizqirizqi/webpconvert?style=flat-square
+[dev-dep-url]: https://david-dm.org/rizqirizqi/webpconvert?type=dev
+[vulnerability-badge]: https://img.shields.io/snyk/vulnerabilities/npm/webpconvert?style=flat-square
+[vulnerability-url]: https://snyk.io/test/github/rizqirizqi/webpconvert
+[contrib-badge]: https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square
+[contrib-url]: https://github.com/rizqirizqi/webpconvert/issues
+
 [github-watch-badge]: https://img.shields.io/github/watchers/rizqirizqi/webpconvert.svg?style=social
 [github-watch]: https://github.com/rizqirizqi/webpconvert/watchers
 [github-star-badge]: https://img.shields.io/github/stars/rizqirizqi/webpconvert.svg?style=social
