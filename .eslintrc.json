@@ -16,5 +16,13 @@
     "ecmaVersion": 2018
   },
   "ignorePatterns": ["jest.config.js", "node_modules/"],
-  "rules": {}
+  "rules": {
+    "strict": 0,
+    "indent": ["error", 2],
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "single"],
+    "quote-props": ["warn", "consistent-as-needed"],
+    "no-console": "off",
+    "comma-dangle": ["error", "always-multiline"]
+  }
 }
