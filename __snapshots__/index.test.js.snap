@@ -5,8 +5,8 @@ exports[`webpconvert --help 1`] = `
 Usage: webpconvert [source] [target] [options]
 
 Options:
-  --help, -h     Show help                                             [boolean]
-  --version, -v  Show version number                                   [boolean]
+  -h, --help     Show help                                             [boolean]
+  -v, --version  Show version number                                   [boolean]
 
 Examples:
   webpconvert
