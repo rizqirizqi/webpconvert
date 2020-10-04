@@ -9,7 +9,6 @@ CLI Converter from png/jpg images to webp
 
 [![dependencies Status][dep-badge]][dep-url]
 [![devDependencies Status][dev-dep-badge]][dev-dep-url]
-[![Known Vulnerabilities][vulnerability-badge]][vulnerability-url]
 [![contributions welcome][contrib-badge]][contrib-url]
 
 [![Watch on GitHub][github-watch-badge]][github-watch]
@@ -17,18 +16,23 @@ CLI Converter from png/jpg images to webp
 [![Tweet][twitter-badge]][twitter]
 
 ## Usage
-1. Install npx
+1. Install webpconvert
    ```bash
-   npm install -g npx
+   npm install -g webpconvert
    ```
 2. Run this command
    ```bash
-   npx webpconvert <source>
+   webpconvert <source>
    ```
 
 ### Help
 ```bash
-npx webpconvert --help
+webpconvert --help
+```
+
+### Use npx for one time usage
+```bash
+npx webpconvert <source>
 ```
 
 ## Contributing
@@ -70,8 +74,6 @@ MIT
 [dep-url]: https://david-dm.org/rizqirizqi/webpconvert
 [dev-dep-badge]: https://img.shields.io/david/dev/rizqirizqi/webpconvert?style=flat-square
 [dev-dep-url]: https://david-dm.org/rizqirizqi/webpconvert?type=dev
-[vulnerability-badge]: https://img.shields.io/snyk/vulnerabilities/npm/webpconvert?style=flat-square
-[vulnerability-url]: https://snyk.io/test/github/rizqirizqi/webpconvert
 [contrib-badge]: https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square
 [contrib-url]: https://github.com/rizqirizqi/webpconvert/issues
 
