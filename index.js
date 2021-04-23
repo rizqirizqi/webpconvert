@@ -9,10 +9,20 @@ import { resolve, dirname } from 'path';
 
 const { argv } = yargs(hideBin(process.argv))
   .usage('Convert jpg/png images in specified directory to webp\nUsage: webpconvert [source] [target] [options]')
+  .wrap(null)
   .example('webpconvert')
   .example('webpconvert sample-images')
+  .example('webpconvert sample-images -q 50')
   .example('webpconvert sample-images output')
   .example('webpconvert sample-images/KittenJPG.jpg')
+  .options('q', {
+    alias: 'quality',
+    demandOption: false,
+    default: 80,
+    describe: 'Specify the quality of webp image. Lower values yield better compression but the least image quality.',
+    type: 'number',
+    requiresArg: true,
+  })
   .help()
   .alias('help', 'h')
   .version()
@@ -55,7 +65,7 @@ if (isFile(target)) {
 if (PNGImages) {
   gulp.src(PNGImages)
     .pipe(imagemin([webp({
-      lossless: true, // Losslessly encode images
+      quality: argv.quality,
     })], {
       verbose: true,
     }))
@@ -66,7 +76,7 @@ if (PNGImages) {
 if (JPGImages) {
   gulp.src(JPGImages)
     .pipe(imagemin([webp({
-      quality: 65, // Quality setting from 0 to 100
+      quality: argv.quality,
     })], {
       verbose: true,
     }))
