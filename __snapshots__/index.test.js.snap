@@ -5,12 +5,14 @@ exports[`webpconvert --help 1`] = `
 Usage: webpconvert [source] [target] [options]
 
 Options:
-  -h, --help     Show help                                             [boolean]
-  -v, --version  Show version number                                   [boolean]
+  -q, --quality  Specify the quality of webp image. Lower values yield better compression but the least image quality.  [number] [default: 80]
+  -h, --help     Show help  [boolean]
+  -v, --version  Show version number  [boolean]
 
 Examples:
   webpconvert
   webpconvert sample-images
+  webpconvert sample-images -q 50
   webpconvert sample-images output
   webpconvert sample-images/KittenJPG.jpg
 "
