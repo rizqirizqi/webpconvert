@@ -1,7 +1,7 @@
-const dirTree = require('directory-tree');
-const fs = require('fs');
-const path = require('path');
-const spawn = require('spawn-command');
+import dirTree from 'directory-tree';
+import { unlinkSync, rmdirSync } from 'fs';
+import { resolve as _resolve } from 'path';
+import spawn from 'spawn-command';
 
 const APP_ENTRY_PATH = require.resolve('./index');
 const SAMPLE_DIRECTORY = 'sample-images';
@@ -13,7 +13,7 @@ const getOutputImages = (dir = SAMPLE_DIRECTORY) => dirTree(dir, { extensions: /
 const clearOutputs = (dir = SAMPLE_DIRECTORY) => {
   const outputImg = getOutputImages(dir);
   outputImg.children.forEach((img) => {
-    fs.unlinkSync(img.path);
+    unlinkSync(img.path);
   });
 };
 
@@ -21,7 +21,7 @@ const runCLI = (args = '', cwd = process.cwd()) => {
   const isRelative = cwd[0] !== '/';
   let workingDir = cwd;
   if (isRelative) {
-    workingDir = path.resolve(__dirname, cwd);
+    workingDir = _resolve(__dirname, cwd);
   }
 
   return new Promise((resolve, reject) => {
@@ -94,8 +94,9 @@ describe('Convert Images', () => {
       outputImg = getOutputImages('output');
       expect(outputImg.children.length).toBe(4);
       expect(stdout.match(/Minified 2 images/g)).toHaveLength(2);
+    }).finally(() => {
       clearOutputs('output');
-      fs.rmdirSync('output');
+      rmdirSync('output');
     });
   });
   test('webpconvert sample-images/KittenJPG.jpg | it convert a single image file', async () => {

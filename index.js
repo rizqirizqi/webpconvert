@@ -1,12 +1,13 @@
 #!/usr/bin/env node
-const yargs = require('yargs');
-const gulp = require('gulp');
-const imagemin = require('gulp-imagemin');
-const rename = require('gulp-rename');
-const webp = require('imagemin-webp');
-const path = require('path');
+import yargs from 'yargs';
+import { hideBin } from 'yargs/helpers';
+import gulp from 'gulp';
+import imagemin from 'gulp-imagemin';
+import rename from 'gulp-rename';
+import webp from 'imagemin-webp';
+import { resolve, dirname } from 'path';
 
-const { argv } = yargs
+const { argv } = yargs(hideBin(process.argv))
   .usage('Convert jpg/png images in specified directory to webp\nUsage: webpconvert [source] [target] [options]')
   .example('webpconvert')
   .example('webpconvert sample-images')
@@ -39,14 +40,14 @@ if (isFile(source)) {
     JPGImages = source;
   }
 } else {
-  PNGImages = path.resolve(source, '*.png');
-  JPGImages = path.resolve(source, '*.jpg');
+  PNGImages = resolve(source, '*.png');
+  JPGImages = resolve(source, '*.jpg');
 }
 
 let target = argv._[1] || source || '.';
 
 if (isFile(target)) {
-  target = path.dirname(target);
+  target = dirname(target);
 }
 
 // Processing
