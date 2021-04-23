@@ -22,7 +22,14 @@ CLI Converter from png/jpg images to webp
    ```
 2. Run this command
    ```bash
-   webpconvert <source>
+   webpconvert [source] [target] [options]
+
+   # Example
+   webpconvert
+   webpconvert sample-images
+   webpconvert sample-images -q 50
+   webpconvert sample-images output
+   webpconvert sample-images/KittenJPG.jpg
    ```
 
 ### Help
@@ -32,7 +39,7 @@ webpconvert --help
 
 ### Use npx for one time usage
 ```bash
-npx webpconvert <source>
+npx webpconvert [source] [target] [options]
 ```
 
 ## Contributing
