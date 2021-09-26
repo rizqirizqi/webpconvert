@@ -1,12 +1,12 @@
 {
   "name": "webpconvert",
   "type": "module",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "CLI Converter from png/jpg images to webp",
   "exports": "./index.js",
   "bin": "./index.js",
   "engines": {
-    "node": ">=12"
+    "node": "^12 || ^14 || >=16"
   },
   "scripts": {
     "lint": "node ./node_modules/eslint/bin/eslint.js .",
@@ -31,19 +31,19 @@
   },
   "dependencies": {
     "gulp": "^4.0.2",
-    "gulp-imagemin": "^7.1.0",
+    "gulp-imagemin": "^8.0.0",
     "gulp-rename": "^2.0.0",
-    "imagemin": "^8.0.0",
+    "imagemin": "^8.0.1",
     "imagemin-webp": "^6.0.0",
-    "yargs": "^17.0.1"
+    "yargs": "^17.2.1"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
-    "directory-tree": "^2.2.9",
-    "eslint": "^7.27.0",
+    "directory-tree": "^3.0.0",
+    "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.23.4",
-    "jest": "^27.0.3",
+    "eslint-plugin-import": "^2.24.2",
+    "jest": "^27.2.2",
     "jest-esm-transformer": "^1.0.0",
     "spawn-command": "^0.0.2-1"
   }
