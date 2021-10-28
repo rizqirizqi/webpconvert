@@ -121,4 +121,16 @@ describe('Convert Images', () => {
       expect(stdout.match(/Minified 1 image/g)).toHaveLength(1);
     });
   });
+  test('webpconvert sample-images/KittenPNG.jpg | it convert a single image file with prefix and suffix', async () => {
+    const inputImg = getInputImages();
+    let outputImg = getOutputImages();
+    expect(inputImg.children.length).toBe(4);
+    expect(outputImg.children.length).toBe(0);
+    return runCLI(`${SAMPLE_DIRECTORY}/KittenPNG.png --prefix="img-" --suffix="-compressed"`).then((stdout) => {
+      outputImg = getOutputImages();
+      expect(outputImg.children.length).toBe(1);
+      expect(outputImg.children[0].name).toMatch('img-KittenPNG-compressed.png.webp');
+      expect(stdout.match(/Minified 1 image/g)).toHaveLength(1);
+    });
+  });
 });

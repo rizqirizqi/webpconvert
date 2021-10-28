@@ -13,8 +13,25 @@ const { argv } = yargs(hideBin(process.argv))
   .example('webpconvert')
   .example('webpconvert sample-images')
   .example('webpconvert sample-images -q 50')
+  .example('webpconvert sample-images -p "img-" -s "-compressed"')
   .example('webpconvert sample-images output')
   .example('webpconvert sample-images/KittenJPG.jpg')
+  .options('p', {
+    alias: 'prefix',
+    demandOption: false,
+    default: '',
+    describe: 'Specify the prefix of output filename.',
+    type: 'string',
+    requiresArg: true,
+  })
+  .options('s', {
+    alias: 'suffix',
+    demandOption: false,
+    default: '',
+    describe: 'Specify the suffix of output filename.',
+    type: 'string',
+    requiresArg: true,
+  })
   .options('q', {
     alias: 'quality',
     demandOption: false,
@@ -69,7 +86,7 @@ if (PNGImages) {
     })], {
       verbose: true,
     }))
-    .pipe(rename({ suffix: '.png', extname: '.webp' }))
+    .pipe(rename({ prefix: argv.prefix, suffix: `${argv.suffix}.png`, extname: '.webp' }))
     .pipe(gulp.dest(target));
 }
 
@@ -80,6 +97,6 @@ if (JPGImages) {
     })], {
       verbose: true,
     }))
-    .pipe(rename({ suffix: '.jpg', extname: '.webp' }))
+    .pipe(rename({ prefix: argv.prefix, suffix: `${argv.suffix}.jpg`, extname: '.webp' }))
     .pipe(gulp.dest(target));
 }
