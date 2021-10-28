@@ -13,7 +13,7 @@ const { argv } = yargs(hideBin(process.argv))
   .example('webpconvert')
   .example('webpconvert sample-images')
   .example('webpconvert sample-images -q 50')
-  .example('webpconvert sample-images -p "img-" -s "-compressed"')
+  .example('webpconvert sample-images --prefix="img-" --suffix="-compressed"')
   .example('webpconvert sample-images output')
   .example('webpconvert sample-images/KittenJPG.jpg')
   .options('p', {
