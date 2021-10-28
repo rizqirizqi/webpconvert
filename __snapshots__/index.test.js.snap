@@ -15,7 +15,7 @@ Examples:
   webpconvert
   webpconvert sample-images
   webpconvert sample-images -q 50
-  webpconvert sample-images -p \\"img-\\" -s \\"-compressed\\"
+  webpconvert sample-images --prefix=\\"img-\\" --suffix=\\"-compressed\\"
   webpconvert sample-images output
   webpconvert sample-images/KittenJPG.jpg
 "
