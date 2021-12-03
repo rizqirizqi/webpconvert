@@ -29,8 +29,22 @@ CLI Converter from png/jpg images to webp
    webpconvert sample-images
    webpconvert sample-images -q 50
    webpconvert sample-images output
+   webpconvert sample-images -m
    webpconvert sample-images/KittenJPG.jpg
    ```
+
+### Options
+
+| Option | Option alias | Description                                                                                           | Type    | Default |
+|--------|--------------|-------------------------------------------------------------------------------------------------------|---------|---------|
+| -p     | --prefix     | Specify the prefix of output filename.                                                                | string  | ""      |
+| -s     | --suffix     | Specify the suffix of output filename.                                                                | string  | ""      |
+| -q     | --quality    | Specify the quality of webp image. Lower values yield better compression but the least image quality. | number  | 80      |
+| -m     | --mute       | Disable output messages.                                                                              | boolean |         |
+| -h     | --help       | Show help.                                                                                            | boolean |         |
+| -v     | --version    | Show version number.                                                                                  | boolean |         |
+
+```
 
 ### Help
 ```bash
