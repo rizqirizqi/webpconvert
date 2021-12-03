@@ -65,12 +65,15 @@ npx webpconvert [source] [target] [options]
 
 ### Start
 ```
-yarn start
+yarn start [source] [target] [options]
 ```
 
 ### Test
 ```
+# Run test:
 yarn test
+# Update snapshot files:
+yarn test -u
 ```
 
 ### Lint
