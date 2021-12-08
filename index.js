@@ -40,6 +40,14 @@ const { argv } = yargs(hideBin(process.argv))
     type: 'number',
     requiresArg: true,
   })
+  .options('m', {
+    alias: 'mute',
+    demandOption: false,
+    default: false,
+    describe: 'Disable output messages.',
+    type: 'boolean',
+    requiresArg: false,
+  })
   .help()
   .alias('help', 'h')
   .version()
@@ -84,7 +92,8 @@ if (PNGImages) {
     .pipe(imagemin([webp({
       quality: argv.quality,
     })], {
-      verbose: true,
+      verbose: !argv.mute,
+      silent: false
     }))
     .pipe(rename({ prefix: argv.prefix, suffix: `${argv.suffix}.png`, extname: '.webp' }))
     .pipe(gulp.dest(target));
@@ -95,7 +104,8 @@ if (JPGImages) {
     .pipe(imagemin([webp({
       quality: argv.quality,
     })], {
-      verbose: true,
+      verbose: !argv.mute,
+      silent: false
     }))
     .pipe(rename({ prefix: argv.prefix, suffix: `${argv.suffix}.jpg`, extname: '.webp' }))
     .pipe(gulp.dest(target));
