@@ -93,7 +93,7 @@ if (PNGImages) {
       quality: argv.quality,
     })], {
       verbose: !argv.mute,
-      silent: false
+      silent: false,
     }))
     .pipe(rename({ prefix: argv.prefix, suffix: `${argv.suffix}.png`, extname: '.webp' }))
     .pipe(gulp.dest(target));
@@ -105,7 +105,7 @@ if (JPGImages) {
       quality: argv.quality,
     })], {
       verbose: !argv.mute,
-      silent: false
+      silent: false,
     }))
     .pipe(rename({ prefix: argv.prefix, suffix: `${argv.suffix}.jpg`, extname: '.webp' }))
     .pipe(gulp.dest(target));
