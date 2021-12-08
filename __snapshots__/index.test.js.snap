@@ -8,9 +8,9 @@ Options:
   -p, --prefix   Specify the prefix of output filename.  [string] [default: \\"\\"]
   -s, --suffix   Specify the suffix of output filename.  [string] [default: \\"\\"]
   -q, --quality  Specify the quality of webp image. Lower values yield better compression but the least image quality.  [number] [default: 80]
-  -m, --mute     Disable output messages.  [boolean]
-  -h, --help     Show help.  [boolean]
-  -v, --version  Show version number.  [boolean]
+  -m, --mute     Disable output messages.  [boolean] [default: false]
+  -h, --help     Show help  [boolean]
+  -v, --version  Show version number  [boolean]
 
 Examples:
   webpconvert
@@ -18,7 +18,6 @@ Examples:
   webpconvert sample-images -q 50
   webpconvert sample-images --prefix=\\"img-\\" --suffix=\\"-compressed\\"
   webpconvert sample-images output
-  webpconvert sample-images -m
   webpconvert sample-images/KittenJPG.jpg
 "
 `;
