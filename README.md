@@ -33,6 +33,16 @@ CLI Converter from png/jpg images to webp
    webpconvert sample-images/KittenJPG.jpg
    ```
 
+### Help
+```bash
+webpconvert --help
+```
+
+### Use npx for one time usage
+```bash
+npx webpconvert [source] [target] [options]
+```
+
 ### Options
 
 | Option | Option alias | Description                                                                                           | Type    | Default |
@@ -43,18 +53,6 @@ CLI Converter from png/jpg images to webp
 | -m     | --mute       | Disable output messages.                                                                              | boolean |         |
 | -h     | --help       | Show help.                                                                                            | boolean |         |
 | -v     | --version    | Show version number.                                                                                  | boolean |         |
-
-```
-
-### Help
-```bash
-webpconvert --help
-```
-
-### Use npx for one time usage
-```bash
-npx webpconvert [source] [target] [options]
-```
 
 ## Contributing
 1. Fork this repo
