@@ -7,10 +7,7 @@ CLI Converter from png/jpg images to webp
 [![downloads][downloads-badge]][downloads-url]
 [![MIT License][license-badge]][license-url]
 
-[![dependencies Status][dep-badge]][dep-url]
-[![devDependencies Status][dev-dep-badge]][dev-dep-url]
 [![contributions welcome][contrib-badge]][contrib-url]
-
 [![Watch on GitHub][github-watch-badge]][github-watch]
 [![Star on GitHub][github-star-badge]][github-star]
 [![Tweet][twitter-badge]][twitter]
@@ -92,13 +89,8 @@ MIT
 [license-badge]: https://img.shields.io/npm/l/webpconvert.svg?style=flat-square
 [license-url]: https://github.com/rizqirizqi/webpconvert/blob/master/LICENSE
 
-[dep-badge]: https://img.shields.io/david/rizqirizqi/webpconvert?style=flat-square
-[dep-url]: https://david-dm.org/rizqirizqi/webpconvert
-[dev-dep-badge]: https://img.shields.io/david/dev/rizqirizqi/webpconvert?style=flat-square
-[dev-dep-url]: https://david-dm.org/rizqirizqi/webpconvert?type=dev
 [contrib-badge]: https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square
 [contrib-url]: https://github.com/rizqirizqi/webpconvert/issues
-
 [github-watch-badge]: https://img.shields.io/github/watchers/rizqirizqi/webpconvert.svg?style=social
 [github-watch]: https://github.com/rizqirizqi/webpconvert/watchers
 [github-star-badge]: https://img.shields.io/github/stars/rizqirizqi/webpconvert.svg?style=social
