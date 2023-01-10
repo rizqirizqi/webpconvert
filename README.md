@@ -80,7 +80,7 @@ yarn lint
 
 MIT
 
-[build-badge]: https://img.shields.io/github/workflow/status/rizqirizqi/webpconvert/Publish?style=flat-square
+[build-badge]: https://img.shields.io/github/actions/workflow/status/rizqirizqi/webpconvert/.github/workflows/test.yml?branch=master&style=flat-square
 [build-url]: https://github.com/rizqirizqi/webpconvert/actions
 [version-badge]: https://img.shields.io/npm/v/webpconvert.svg?style=flat-square
 [version-url]: https://www.npmjs.com/package/webpconvert
