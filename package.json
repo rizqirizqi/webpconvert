@@ -34,7 +34,7 @@
     "gulp-imagemin": "^8.0.0",
     "gulp-rename": "^2.0.0",
     "imagemin": "^8.0.1",
-    "imagemin-webp": "^7.0.0",
+    "imagemin-webp": "^8.0.0",
     "yargs": "^17.3.0"
   },
   "devDependencies": {
