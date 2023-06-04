@@ -1,5 +1,5 @@
 import dirTree from 'directory-tree';
-import { unlinkSync, rmdirSync } from 'fs';
+import { unlink, rm } from 'fs/promises';
 import { resolve as _resolve } from 'path';
 import spawn from 'spawn-command';
 
@@ -10,11 +10,23 @@ const getInputImages = (dir = SAMPLE_DIRECTORY) => dirTree(dir, { extensions: /\
 
 const getOutputImages = (dir = SAMPLE_DIRECTORY) => dirTree(dir, { extensions: /\.webp/ });
 
-const clearOutputs = (dir = SAMPLE_DIRECTORY) => {
+const removeFiles = async (dirTreeObj) => {
+  if (!('children' in dirTreeObj)) {
+    await unlink(dirTreeObj.path);
+  } else {
+    dirTreeObj.children.forEach(async (child) => {
+      if (!('children' in child)) {
+        await unlink(child.path);
+      } else {
+        await removeFiles(child);
+      }
+    });
+  }
+};
+
+const clearOutputs = async (dir = SAMPLE_DIRECTORY) => {
   const outputImg = getOutputImages(dir);
-  outputImg.children.forEach((img) => {
-    unlinkSync(img.path);
-  });
+  await removeFiles(outputImg);
 };
 
 const runCLI = (args = '', cwd = process.cwd()) => {
@@ -58,76 +70,76 @@ test('webpconvert --help', async () => {
 });
 
 describe('Convert Images', () => {
-  beforeEach(() => {
-    clearOutputs();
+  beforeEach(async () => {
+    await clearOutputs();
   });
-  afterEach(() => {
-    clearOutputs();
+  afterEach(async () => {
+    await clearOutputs();
   });
   test('webpconvert | it convert images in current directory', async () => {
     const inputImg = getInputImages();
     let outputImg = getOutputImages();
-    expect(inputImg.children.length).toBe(4);
-    expect(outputImg.children.length).toBe(0);
+    expect(inputImg.children.length).toBe(5);
+    expect(outputImg.children.length).toBe(1);
     const stdout = await runCLI('', SAMPLE_DIRECTORY);
     outputImg = getOutputImages();
-    expect(outputImg.children.length).toBe(4);
-    expect(stdout.match(/Minified 2 images/g)).toHaveLength(2);
+    expect(outputImg.children.length).toBe(5);
+    expect(stdout.match(/Minified 4 images/g)).toHaveLength(2);
   });
   test('webpconvert sample-images | it convert images in specified directory', async () => {
     const inputImg = getInputImages();
     let outputImg = getOutputImages();
-    expect(inputImg.children.length).toBe(4);
-    expect(outputImg.children.length).toBe(0);
+    expect(inputImg.children.length).toBe(5);
+    expect(outputImg.children.length).toBe(1);
     const stdout = await runCLI(SAMPLE_DIRECTORY);
     outputImg = getOutputImages();
-    expect(outputImg.children.length).toBe(4);
-    expect(stdout.match(/Minified 2 images/g)).toHaveLength(2);
+    expect(outputImg.children.length).toBe(5);
+    expect(stdout.match(/Minified 4 images/g)).toHaveLength(2);
   });
   test('webpconvert sample-images output | it convert images from input directory to output directory', async () => {
     const inputImg = getInputImages();
     let outputImg = getOutputImages('output');
-    expect(inputImg.children.length).toBe(4);
+    expect(inputImg.children.length).toBe(5);
     expect(outputImg).toBe(null);
     try {
       const stdout = await runCLI(`${SAMPLE_DIRECTORY} output`);
       outputImg = getOutputImages('output');
-      expect(outputImg.children.length).toBe(4);
-      expect(stdout.match(/Minified 2 images/g)).toHaveLength(2);
+      expect(outputImg.children.length).toBe(5);
+      expect(stdout.match(/Minified 4 images/g)).toHaveLength(2);
     } finally {
-      clearOutputs('output');
-      rmdirSync('output');
+      await clearOutputs('output');
+      await rm('output', { recursive: true, force: true });
     }
   });
   test('webpconvert sample-images/KittenJPG.jpg | it convert a single image file', async () => {
     const inputImg = getInputImages();
     let outputImg = getOutputImages();
-    expect(inputImg.children.length).toBe(4);
-    expect(outputImg.children.length).toBe(0);
+    expect(inputImg.children.length).toBe(5);
+    expect(outputImg.children.length).toBe(1);
     const stdout = await runCLI(`${SAMPLE_DIRECTORY}/KittenJPG.jpg`);
     outputImg = getOutputImages();
-    expect(outputImg.children.length).toBe(1);
+    expect(outputImg.children.length).toBe(2);
     expect(stdout.match(/Minified 1 image/g)).toHaveLength(1);
   });
   test('webpconvert sample-images/KittenPNG.jpg | it convert a single image file with quality 50', async () => {
     const inputImg = getInputImages();
     let outputImg = getOutputImages();
-    expect(inputImg.children.length).toBe(4);
-    expect(outputImg.children.length).toBe(0);
+    expect(inputImg.children.length).toBe(5);
+    expect(outputImg.children.length).toBe(1);
     const stdout = await runCLI(`${SAMPLE_DIRECTORY}/KittenPNG.png -q 50`);
     outputImg = getOutputImages();
-    expect(outputImg.children.length).toBe(1);
+    expect(outputImg.children.length).toBe(2);
     expect(stdout.match(/Minified 1 image/g)).toHaveLength(1);
   });
   test('webpconvert sample-images/KittenPNG.jpg | it convert a single image file with prefix and suffix', async () => {
     const inputImg = getInputImages();
     let outputImg = getOutputImages();
-    expect(inputImg.children.length).toBe(4);
-    expect(outputImg.children.length).toBe(0);
+    expect(inputImg.children.length).toBe(5);
+    expect(outputImg.children.length).toBe(1);
     const stdout = await runCLI(`${SAMPLE_DIRECTORY}/KittenPNG.png --prefix="img-" --suffix="-compressed"`);
     outputImg = getOutputImages();
-    expect(outputImg.children.length).toBe(1);
-    expect(outputImg.children[0].name).toMatch('img-KittenPNG-compressed.png.webp');
+    expect(outputImg.children.length).toBe(2);
+    expect(outputImg.children[1].name).toMatch('img-KittenPNG-compressed.png.webp');
     expect(stdout.match(/Minified 1 image/g)).toHaveLength(1);
   });
 });
