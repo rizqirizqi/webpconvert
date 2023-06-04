@@ -1,7 +1,7 @@
 {
   "name": "webpconvert",
   "type": "module",
-  "version": "2.2.0",
+  "version": "3.0.0",
   "description": "CLI Converter from png/jpg images to webp",
   "exports": "./index.js",
   "bin": "./index.js",
