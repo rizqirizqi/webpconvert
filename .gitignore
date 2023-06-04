@@ -61,4 +61,4 @@ typings/
 .next
 
 output/
-sample-images/*.webp
+sample-images/**/*.webp

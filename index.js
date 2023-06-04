@@ -75,8 +75,8 @@ if (isFile(source)) {
     JPGImages = source;
   }
 } else {
-  PNGImages = resolve(source, '*.png');
-  JPGImages = resolve(source, '*.jpg');
+  PNGImages = resolve(source, '**/*.png');
+  JPGImages = resolve(source, '**/*.jpg');
 }
 
 let target = argv._[1] || source || '.';
