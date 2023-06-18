@@ -44,7 +44,7 @@ const { argv } = yargs(hideBin(process.argv))
     alias: 'recursive',
     demandOption: false,
     default: false,
-    describe: 'Include files in sub-folders.',
+    describe: 'Include files in sub-folders. Will be ignored if the [source] is a file.',
     type: 'boolean',
     requiresArg: false,
   })
