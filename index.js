@@ -40,6 +40,14 @@ const { argv } = yargs(hideBin(process.argv))
     type: 'number',
     requiresArg: true,
   })
+  .options('r', {
+    alias: 'recursive',
+    demandOption: false,
+    default: false,
+    describe: 'Include files in sub-folders. Will be ignored if the [source] is a file.',
+    type: 'boolean',
+    requiresArg: false,
+  })
   .options('m', {
     alias: 'mute',
     demandOption: false,
@@ -75,8 +83,12 @@ if (isFile(source)) {
     JPGImages = source;
   }
 } else {
-  PNGImages = resolve(source, '**/*.png');
-  JPGImages = resolve(source, '**/*.jpg');
+  let wildcard = '*';
+  if (argv.recursive) {
+    wildcard = '**/*';
+  }
+  PNGImages = resolve(source, `${wildcard}.png`);
+  JPGImages = resolve(source, `${wildcard}.jpg`);
 }
 
 let target = argv._[1] || source || '.';
