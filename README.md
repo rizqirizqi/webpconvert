@@ -47,6 +47,7 @@ npx webpconvert [source] [target] [options]
 | -p     | --prefix     | Specify the prefix of output filename.                                                                | string  | ""      |
 | -s     | --suffix     | Specify the suffix of output filename.                                                                | string  | ""      |
 | -q     | --quality    | Specify the quality of webp image. Lower values yield better compression but the least image quality. | number  | 80      |
+| -r     | --recursive  | Include files in sub-folders. Will be ignored if the [source] is a file.                              | boolean |         |
 | -m     | --mute       | Disable output messages.                                                                              | boolean |         |
 | -h     | --help       | Show help.                                                                                            | boolean |         |
 | -v     | --version    | Show version number.                                                                                  | boolean |         |
