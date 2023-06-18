@@ -14,13 +14,14 @@ const removeFiles = async (dirTreeObj) => {
   if (!('children' in dirTreeObj)) {
     await unlink(dirTreeObj.path);
   } else {
-    dirTreeObj.children.forEach(async (child) => {
+    // eslint-disable-next-line no-restricted-syntax
+    for (const child of dirTreeObj.children) {
       if (!('children' in child)) {
         await unlink(child.path);
       } else {
         await removeFiles(child);
       }
-    });
+    }
   }
 };
 
