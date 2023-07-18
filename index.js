@@ -67,7 +67,7 @@ const getExt = (str) => {
   const splitted = str.split('.');
   if (splitted.length < 2) return '';
   if (!splitted[0]) return '';
-  return splitted.slice[-1][0];
+  return splitted.slice(-1)[0];
 };
 const isFile = (str) => !!getExt(str);
 
