@@ -180,7 +180,7 @@ describe('Convert Images', () => {
       const stdout = await runCLI(`${SAMPLE_DIRECTORY}/KittenPNG.png --prefix="img-" --suffix="-compressed"`);
       outputImg = getOutputImages();
       expect(outputImg.children.length).toBe(2);
-      expect(outputImg.children[1].name).toMatch('img-KittenPNG-compressed.png.webp');
+      expect(outputImg.children[1].name).toMatch('img-KittenPNG-compressed.webp');
       expect(stdout.match(/Minified 1 image/g)).toHaveLength(1);
     });
   });
