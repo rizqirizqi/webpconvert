@@ -77,9 +77,10 @@ let PNGImages = '';
 let JPGImages = '';
 
 if (isFile(source)) {
-  if (getExt(source) === 'png') {
+  const extension = getExt(source).toLowerCase();
+  if (extension === 'png') {
     PNGImages = source;
-  } else if (getExt(source) === 'jpg' || getExt(source) === 'jpeg') {
+  } else if (extension === 'jpg' || extension === 'jpeg') {
     JPGImages = source;
   }
 } else {
@@ -100,7 +101,7 @@ if (isFile(target)) {
 // Processing
 
 if (PNGImages) {
-  gulp.src(PNGImages)
+  gulp.src(PNGImages, { nocase: true })
     .pipe(imagemin([webp({
       quality: argv.quality,
     })], {
@@ -112,7 +113,7 @@ if (PNGImages) {
 }
 
 if (JPGImages) {
-  gulp.src(JPGImages)
+  gulp.src(JPGImages, { nocase: true })
     .pipe(imagemin([webp({
       quality: argv.quality,
     })], {
