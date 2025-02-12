@@ -7337,10 +7337,10 @@ sparkles@^1.0.0:
   resolved "https://registry.yarnpkg.com/sparkles/-/sparkles-1.0.1.tgz#008db65edce6c50eec0c5e228e1945061dd0437c"
   integrity sha512-dSO0DDYUahUt/0/pD/Is3VIm5TGJjludZ0HVymmhYF6eNA53PVLhnUk0znSYbH8IYBuJdCE+1luR22jNLMaQdw==
 
-spawn-command@^0.0.2-1:
-  version "0.0.2-1"
-  resolved "https://registry.yarnpkg.com/spawn-command/-/spawn-command-0.0.2-1.tgz#62f5e9466981c1b796dc5929937e11c9c6921bd0"
-  integrity sha1-YvXpRmmBwbeW3Fkpk34RycaSG9A=
+spawn-command@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/spawn-command/-/spawn-command-1.0.0.tgz#ec71622de73aefb57ba8289add75be597d3f7a25"
+  integrity sha512-zsboEQnjeF6tSJ8SRnojMr22HyFEaRaohgTt0Kgx3BgzkXYiboh09vpmZVIq1HOLzkFZDgFJJfwGUqSbb5fQQQ==
 
 spdx-correct@^3.0.0:
   version "3.1.0"
